@@ -1,0 +1,8 @@
+{
+  "name": "Manga Downloader",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "f00a7775"
+}
