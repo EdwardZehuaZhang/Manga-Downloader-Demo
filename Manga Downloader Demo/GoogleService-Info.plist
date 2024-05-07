@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>659300990199-ius6lgms1646jekrhg9a1jkc3jepsl4j.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.659300990199-ius6lgms1646jekrhg9a1jkc3jepsl4j</string>
+	<key>API_KEY</key>
+	<string>AIzaSyClPRuyfi2tu8uGyYYeyjYHoulvSrEUY-4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>659300990199</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Zhang-Edward.Manga-Downloader-Demo</string>
+	<key>PROJECT_ID</key>
+	<string>manga-downloader-demo</string>
+	<key>STORAGE_BUCKET</key>
+	<string>manga-downloader-demo.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:659300990199:ios:4e1e3fd7aecbdaf78267f2</string>
+</dict>
+</plist>
