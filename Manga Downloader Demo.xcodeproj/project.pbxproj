@@ -36,8 +36,6 @@
 		6AF862472BE9F996004F116B /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF862462BE9F996004F116B /* FirebaseAppCheck */; };
 		6AF862492BE9F996004F116B /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF862482BE9F996004F116B /* FirebaseAppDistribution-Beta */; };
 		6AF8624C2BEA1057004F116B /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6AF8624B2BEA1057004F116B /* FirebaseAnalyticsSwift */; };
-		6AF8624E2BEA1476004F116B /* leveldb-main in Resources */ = {isa = PBXBuildFile; fileRef = 6AF8624D2BEA1476004F116B /* leveldb-main */; };
-		6AF862502BEA1B28004F116B /* libleveldb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AF8624F2BEA1B28004F116B /* libleveldb.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,8 +64,6 @@
 		6AC8FEFE27D799F600840A0C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AD57A4227BD919000166B06 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6AE5FCCC27EAC51F0023BEDD /* MenuContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
-		6AF8624D2BEA1476004F116B /* leveldb-main */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "leveldb-main"; path = "Manga Downloader Demo/leveldb-main"; sourceTree = "<group>"; };
-		6AF8624F2BEA1B28004F116B /* libleveldb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libleveldb.a; path = "Manga Downloader Demo/leveldb-main/build/libleveldb.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6AF862502BEA1B28004F116B /* libleveldb.a in Frameworks */,
 				6AF8624C2BEA1057004F116B /* FirebaseAnalyticsSwift in Frameworks */,
 				6AF862412BE9F996004F116B /* FirebaseAnalytics in Frameworks */,
 				6AAE085C27BCB25200E8CAEF /* FirebaseFirestore in Frameworks */,
@@ -99,7 +94,6 @@
 		6A777E9427BBE1530056BED5 = {
 			isa = PBXGroup;
 			children = (
-				6AF8624D2BEA1476004F116B /* leveldb-main */,
 				6A777E9F27BBE1530056BED5 /* Manga Downloader Demo */,
 				6A777E9E27BBE1530056BED5 /* Products */,
 				6AF8624A2BEA1009004F116B /* Frameworks */,
@@ -180,7 +174,6 @@
 		6AF8624A2BEA1009004F116B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6AF8624F2BEA1B28004F116B /* libleveldb.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,7 +249,6 @@
 			files = (
 				6AC8FEFF27D799F600840A0C /* LaunchScreen.storyboard in Resources */,
 				6A777EA827BBE1570056BED5 /* Preview Assets.xcassets in Resources */,
-				6AF8624E2BEA1476004F116B /* leveldb-main in Resources */,
 				6A09B7AE2B0520220087E5E4 /* GoogleService-Info.plist in Resources */,
 				6A777EB227BBE1DB0056BED5 /* Lato-Bold.ttf in Resources */,
 				6A777EB427BBE1DB0056BED5 /* Lato-Regular.ttf in Resources */,
@@ -426,7 +418,7 @@
 				DEVELOPMENT_TEAM = 9WTM47Q8VM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"/Users/24edwardz_1/Documents/GitHub/Manga-Downloader-Demo/Manga Downloader Demo/leveldb-main/include/leveldb\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "Manga-Downloader-Demo-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = tianshanz.;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
@@ -438,13 +430,15 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/Users/24edwardz_1/Documents/GitHub/Manga-Downloader-Demo/Manga Downloader Demo/leveldb-main/build\"";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "Zhang-Edward.Manga-Downloader-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -465,7 +459,7 @@
 				DEVELOPMENT_TEAM = 9WTM47Q8VM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "\"/Users/24edwardz_1/Documents/GitHub/Manga-Downloader-Demo/Manga Downloader Demo/leveldb-main/include/leveldb\"";
+				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "Manga-Downloader-Demo-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = tianshanz.;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.books";
@@ -477,13 +471,15 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "\"/Users/24edwardz_1/Documents/GitHub/Manga-Downloader-Demo/Manga Downloader Demo/leveldb-main/build\"";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = "";
 				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "Zhang-Edward.Manga-Downloader-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

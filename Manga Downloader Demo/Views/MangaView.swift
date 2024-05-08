@@ -191,7 +191,7 @@ struct MangaView: View {
 
 struct MangaView_Previews: PreviewProvider {
     static var previews: some View {
-        MangaView(manganame:"One-Punch Man", mangaauthor: "ONE", mangacover: "http://fmcdn.mangahere.com/store/manga/11912/cover.jpg?token=83ddc5bee7c3154990ed74d6f3f1a6cae4b88281&ttl=1646398800&v=1645768924", mangainfo: "Follows the life of an average hero who manages to win all battles with only one punch. This ability seems to frustrate him as he no longer feels the thrill and adrenaline of fighting a tough battle, which leads to him questioning his past desire of being strong. After all what’s so good about having an overwhelming power?", mangarating: "4.9" , mangastatus: "Ongoing", mangatag1: "Seinen", mangatag2:"Supernatural" ,mangatag3: "Fantasy",mangatag4:"Comedy" ,mangatag5: "Action")
+        MangaView(manganame:"One-Punch Man", mangaauthor: "ONE", mangacover: "https://ibb.co/2MV8NSL", mangainfo: "Follows the life of an average hero who manages to win all battles with only one punch. This ability seems to frustrate him as he no longer feels the thrill and adrenaline of fighting a tough battle, which leads to him questioning his past desire of being strong. After all what’s so good about having an overwhelming power?", mangarating: "4.9" , mangastatus: "Ongoing", mangatag1: "Seinen", mangatag2:"Supernatural" ,mangatag3: "Fantasy",mangatag4:"Comedy" ,mangatag5: "Action")
             .previewDevice("iPhone 12")
             .environmentObject(HideNavBar())
 
