@@ -11,7 +11,6 @@ struct NavigationBarView: View {
     
     @Binding var selection : Int
     @EnvironmentObject var hideBar : HideNavBar
-
     
     var body: some View {
         VStack{

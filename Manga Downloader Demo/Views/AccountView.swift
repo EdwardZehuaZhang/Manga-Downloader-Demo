@@ -12,7 +12,7 @@ struct AccountView: View {
         NavigationView{
             ZStack{
                 Image("Mountain").opacity(1)
-                    .padding(.top, 120)
+                    .padding(.top, 250)
                 VStack{
                 VStack{
                     Image("Hat")
@@ -50,7 +50,7 @@ struct AccountView: View {
                         }
                     }
                 }.frame(width: 308.6, height: 119.9)
-                        .padding(.bottom, 400)
+                        .padding(.bottom, 280)
                 }
         }
     }.navigationBarHidden(true)

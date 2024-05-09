@@ -25,11 +25,6 @@ final class HideNavBar: ObservableObject{
 struct Manga_Downloader_DemoApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
-    init(){
-        FirebaseApp.configure()
-    }
-    
     @StateObject var hideNavBar = HideNavBar()
     @State private var Opa = 1.0
     @State private var progress = 0.0

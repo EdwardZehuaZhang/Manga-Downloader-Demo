@@ -131,7 +131,7 @@ struct ExploreView: View{
                                                 .navigationBarHidden(true)
                                               ){
                                             HStack(spacing:17){
-                                                AsyncImage(url: URL(string:"manga.cover")) { image in
+                                                AsyncImage(url: URL(string:manga.cover)) { image in
                                                     image.resizable()
                                                 } placeholder:{
                                                     ProgressView()
@@ -178,8 +178,10 @@ struct ExploreView: View{
 }
 
 struct ExploreView_Previews: PreviewProvider {
+    static var hideNavBar = HideNavBar()
     static var previews: some View {
         ExploreView(showMenu: .constant(false))
+            .environmentObject(hideNavBar)
             .previewDevice("iPhone 12")
     }
 }
