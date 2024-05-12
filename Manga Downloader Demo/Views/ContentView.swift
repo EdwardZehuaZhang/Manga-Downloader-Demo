@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 15/2/22.
-//
-
 import SwiftUI
     
 struct ContentView: View {
@@ -70,10 +63,6 @@ struct ContentView: View {
         }
         }
     }
-
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

@@ -1,14 +1,7 @@
-//
-//  ExploreView.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 19/2/22.
-//
-
 import SwiftUI
 
 struct ExploreView: View{
-    @ObservedObject var viewModel: ViewModel  // Use the passed ViewModel
+    @ObservedObject var viewModel: ViewModel
     @Binding var showMenu: Bool
     
     var body: some View {
@@ -174,14 +167,14 @@ struct ExploreView: View{
         self._viewModel = ObservedObject(wrappedValue: viewModel)
         self._showMenu = showMenu
         print("ExploreView initialized, showMenu is: \(showMenu.wrappedValue)")
-        viewModel.getData() // Use viewModel here instead of model
+        viewModel.getData() 
     }
 }
 
 struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = ViewModel()  // Create an instance of ViewModel
-        let hideNavBar = HideNavBar()  // Create an instance of HideNavBar if needed
+        let viewModel = ViewModel()
+        let hideNavBar = HideNavBar()
         return ExploreView(viewModel: viewModel, showMenu: .constant(false))
             .environmentObject(hideNavBar)
             .previewDevice("iPhone 12")

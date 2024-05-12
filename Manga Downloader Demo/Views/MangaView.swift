@@ -1,10 +1,3 @@
-//
-//  MangaView.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 19/2/22.
-//
-
 import SwiftUI
 
 extension View {
@@ -39,8 +32,7 @@ struct MangaView: View {
     var mangatag5: String
     
     @EnvironmentObject var hideBar : HideNavBar
-    @StateObject var viewModel = ViewModel()  // Initialize ViewModel here
-
+    @StateObject var viewModel = ViewModel()
 
     private let posterwidth: CGFloat = 264.8
     

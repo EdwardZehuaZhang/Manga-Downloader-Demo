@@ -1,3 +1,4 @@
+![image info](./cover.png)
 
 # Tianshanz Manga
 
@@ -62,7 +63,9 @@ Contributions are what make the open source community such an amazing place to l
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
+## Contact
 
+Project Link: [https://github.com/Yangtze-River-Full-of-Milkteaaa/Tianshanz-Manga](https://github.com/Yangtze-River-Full-of-Milkteaaa/Tianshanz-Manga)
 
 ## Acknowledgements
 

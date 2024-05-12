@@ -7,7 +7,7 @@ struct NavigationBarView: View {
     var body: some View {
         VStack {
             Spacer()
-            if !hideNavBar.HideBar { // This line checks the condition
+            if !hideNavBar.HideBar { 
                 ZStack {
                     VStack(spacing: 0) {
                         Rectangle()
