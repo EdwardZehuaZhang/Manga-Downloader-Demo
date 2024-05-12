@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExploreView: View{
-    @ObservedObject var model = ViewModel()
+    @ObservedObject var viewModel: ViewModel  // Use the passed ViewModel
     @Binding var showMenu: Bool
     
     var body: some View {
@@ -125,9 +125,9 @@ struct ExploreView: View{
                         VStack(alignment: .leading){
                             ScrollView(.vertical, showsIndicators: false){
                                 VStack(spacing: 19){
-                                    ForEach(model.list){ manga in
+                                    ForEach(viewModel.list){ manga in
                                         NavigationLink(
-                                            destination: MangaView(manganame: manga.name, mangaauthor: manga.author, mangacover: manga.cover, mangainfo: manga.info, mangarating: manga.rating, mangastatus: manga.status, mangatag1: manga.tag1, mangatag2:manga.tag2 ,mangatag3: manga.tag3,mangatag4:manga.tag4 ,mangatag5: manga.tag5)
+                                            destination: MangaView(manganame: manga.name, mangaauthor: manga.author, mangacover: manga.cover, mangainfo: manga.info, mangarating: manga.rating, mangastatus: manga.status, mangatag1: manga.tag1, mangatag2:manga.tag2 ,mangatag3: manga.tag3,mangatag4:manga.tag4 ,mangatag5: manga.tag5, viewModel: viewModel)
                                                 .navigationBarHidden(true)
                                               ){
                                             HStack(spacing:17){
@@ -170,18 +170,21 @@ struct ExploreView: View{
             }.navigationBarHidden(true)
         }
     }
-    init(showMenu: Binding<Bool>){
+    init(viewModel: ViewModel, showMenu: Binding<Bool>) {
+        self._viewModel = ObservedObject(wrappedValue: viewModel)
         self._showMenu = showMenu
-        model.getData()
-
+        print("ExploreView initialized, showMenu is: \(showMenu.wrappedValue)")
+        viewModel.getData() // Use viewModel here instead of model
     }
 }
 
 struct ExploreView_Previews: PreviewProvider {
-    static var hideNavBar = HideNavBar()
     static var previews: some View {
-        ExploreView(showMenu: .constant(false))
+        let viewModel = ViewModel()  // Create an instance of ViewModel
+        let hideNavBar = HideNavBar()  // Create an instance of HideNavBar if needed
+        return ExploreView(viewModel: viewModel, showMenu: .constant(false))
             .environmentObject(hideNavBar)
             .previewDevice("iPhone 12")
     }
 }
+

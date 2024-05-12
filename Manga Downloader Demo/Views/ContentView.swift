@@ -9,6 +9,7 @@ import SwiftUI
     
 struct ContentView: View {
     
+    @StateObject var viewModel = ViewModel()
     @State private var selection = 2
     @EnvironmentObject var hideBar : HideNavBar
     @State var showMenu = false
@@ -39,7 +40,7 @@ struct ContentView: View {
                             Text("")
                             }
                         .tag(1)
-                    ExploreView(showMenu: self.$showMenu)
+                    ExploreView(viewModel: viewModel, showMenu: self.$showMenu)
                         .disabled(self.showMenu ? true : false)
                         .blur(radius: blurnum)
                         .tabItem{
@@ -82,4 +83,3 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(HideNavBar())
     }
 }
-

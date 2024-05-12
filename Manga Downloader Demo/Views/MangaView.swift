@@ -39,6 +39,8 @@ struct MangaView: View {
     var mangatag5: String
     
     @EnvironmentObject var hideBar : HideNavBar
+    @StateObject var viewModel = ViewModel()  // Initialize ViewModel here
+
 
     private let posterwidth: CGFloat = 264.8
     
@@ -101,7 +103,7 @@ struct MangaView: View {
                     }
                     VStack(){
                         HStack{
-                            NavigationLink(destination: ExploreView(showMenu: .constant(false)).navigationBarHidden(true))
+                            NavigationLink(destination: ExploreView(viewModel: viewModel, showMenu: .constant(false)).navigationBarHidden(true))
                             {
                                 Image("Moveback")
                                     .padding(.bottom, 30)

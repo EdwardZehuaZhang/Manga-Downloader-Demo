@@ -1,38 +1,20 @@
-//
-//  ViewModel.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 17/2/22.
-//
-
 import Foundation
 import Firebase
 
 class ViewModel: ObservableObject{
-    
     @Published var list = [Popular]()
+    var isDataLoaded = false
     
     func getData(){
-        
-        //get a reference to the database
+        if isDataLoaded { return }
         let db = Firestore.firestore()
         
-        //read the documents at a specific point
         db.collection("Popular").getDocuments { snapshot, error in
-            
-            //check for errors
-            if error == nil {
-                //no errors
-                
-                if let snapshot = snapshot{
-                    
-                    //update property in main thread
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else if let snapshot = snapshot {
                     DispatchQueue.main.async {
-                        
-                        //get all document and create todos
                         self.list = snapshot.documents.map{ d in
-                            
-                            //create a popular item for each document returned
                             return Popular(id: d.documentID,
                                            name: d["name"] as? String ?? "",
                                            author: d["author"] as? String ?? "",
@@ -47,16 +29,12 @@ class ViewModel: ObservableObject{
                                            tag5: d["tag5"] as? String ?? ""
                             )
                         }
+                        print("Loaded \(self.list.count) items")
+
                     }
-                    
-                   
-                }
-            }
-            else{
-                //handel error
-                
             }
         }
+        isDataLoaded = true
     }
 
 }
