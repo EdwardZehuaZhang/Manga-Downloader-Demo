@@ -296,6 +296,7 @@ struct HistoryView: View {
                     }.padding(.top, -30)
                 }
             }.navigationBarHidden(true)
+
         }
     }
 }
