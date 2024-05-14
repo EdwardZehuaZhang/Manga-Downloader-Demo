@@ -4,7 +4,7 @@ struct ContentView: View {
     @StateObject var viewModel = ViewModel()
     @State private var selection = 2
     @EnvironmentObject var hideBar: HideNavBar
-    @State var showMenu = false
+    @EnvironmentObject var menuState: MenuState
     @State private var blurnum = 0.0
 
     init() {
@@ -18,7 +18,7 @@ struct ContentView: View {
             .onEnded {
                 if $0.translation.width < -100 {
                     withAnimation {
-                        self.showMenu = false
+                        menuState.showMenu = false
                     }
                 }
             }
@@ -31,8 +31,8 @@ struct ContentView: View {
                             Text("")
                         }
                         .tag(1)
-                    ExploreView(viewModel: viewModel, showMenu: self.$showMenu)
-                        .disabled(self.showMenu ? true : false)
+                    ExploreView(viewModel: viewModel)
+                        .disabled(menuState.showMenu)
                         .blur(radius: blurnum)
                         .tabItem {
                             Text("")
@@ -44,20 +44,34 @@ struct ContentView: View {
                         }
                         .tag(3)
                 }
+
                 ZStack {
                     NavigationBarView(selection: $selection)
                 }
-                if self.showMenu {
+
+                if menuState.showMenu {
+                    Color.black.opacity(0.3)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            withAnimation {
+                                menuState.showMenu = false
+                            }
+                        }
+
                     MenuContent()
-                        .offset(y: -47)
-                        .frame(minWidth: 319.9)
+                        .frame(width: 319.9)
                         .transition(.move(edge: .leading))
-                        .onAppear { blurnum = 3 }
-                        .onDisappear { blurnum = 0 }
+                        .zIndex(1)
                 }
             }
             .gesture(drag)
+            .onChange(of: menuState.showMenu) { _ in
+                withAnimation {
+                    blurnum = menuState.showMenu ? 3 : 0
+                }
+            }
         }
+        .ignoresSafeArea(edges: .all)
     }
 }
 
@@ -66,5 +80,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .previewDevice("iPhone 12")
             .environmentObject(HideNavBar())
+            .environmentObject(MenuState())
     }
 }

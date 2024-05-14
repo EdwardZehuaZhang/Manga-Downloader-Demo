@@ -2,12 +2,7 @@ import SwiftUI
 
 struct ExploreView: View {
     @ObservedObject var viewModel: ViewModel
-    @Binding var showMenu: Bool
-
-    init(viewModel: ViewModel, showMenu: Binding<Bool>) {
-        self._viewModel = ObservedObject(wrappedValue: viewModel)
-        self._showMenu = showMenu
-    }
+    @EnvironmentObject var menuState: MenuState
 
     var body: some View {
         NavigationView {
@@ -21,11 +16,13 @@ struct ExploreView: View {
                     ScrollView(.vertical) {
                         ZStack {
                             RoundedRectangle(cornerRadius: 21)
-                                .fill(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                                .fill(Color.white)
                                 .frame(maxWidth: .infinity, minHeight: 52)
                                 .opacity(0)
                             HStack(spacing: 20) {
-                                Button(action: { withAnimation { self.showMenu = true } }) {
+                                Button(action: {
+                                    withAnimation { menuState.showMenu = true }
+                                }) {
                                     Image("Menu")
                                 }
                                 .padding(.leading, 35)
@@ -52,9 +49,13 @@ struct ExploreView: View {
                                 Button(action: {}) {
                                     ZStack {
                                         if let url = URL(string: "https://cdn.animenewsnetwork.com/thumbnails/crop900x350g0U/cms/news.5/179519/mushoku_2_visual_03_a.jpg") {
-                                            CachedAsyncImage(url: url)
-                                                .frame(width: 274, height: 160)
-                                                .cornerRadius(15)
+                                            AsyncImage(url: url) { image in
+                                                image.resizable().scaledToFill()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .frame(width: 274, height: 160)
+                                            .cornerRadius(15)
                                         }
                                         RoundedRectangle(cornerRadius: 15)
                                             .fill(Color.black)
@@ -70,9 +71,13 @@ struct ExploreView: View {
                                 Button(action: {}) {
                                     ZStack {
                                         if let url = URL(string: "https://cdn.animenewsnetwork.com/thumbnails/crop900x350gKB/cms/news.5/183300/vis-2.jpg") {
-                                            CachedAsyncImage(url: url)
-                                                .frame(width: 274, height: 160)
-                                                .cornerRadius(15)
+                                            AsyncImage(url: url) { image in
+                                                image.resizable().scaledToFill()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .frame(width: 274, height: 160)
+                                            .cornerRadius(15)
                                         }
                                         RoundedRectangle(cornerRadius: 15)
                                             .fill(Color.black)
@@ -88,9 +93,13 @@ struct ExploreView: View {
                                 Button(action: {}) {
                                     ZStack {
                                         if let url = URL(string: "https://cdn.animenewsnetwork.com/thumbnails/crop900x350gHG/cms/news.5/183274/winning_16big.jpg") {
-                                            CachedAsyncImage(url: url)
-                                                .frame(width: 274, height: 160)
-                                                .cornerRadius(15)
+                                            AsyncImage(url: url) { image in
+                                                image.resizable().scaledToFill()
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+                                            .frame(width: 274, height: 160)
+                                            .cornerRadius(15)
                                         }
                                         RoundedRectangle(cornerRadius: 15)
                                             .fill(Color.black)
@@ -128,16 +137,19 @@ struct ExploreView: View {
                                                 mangatag2: manga.tag2,
                                                 mangatag3: manga.tag3,
                                                 mangatag4: manga.tag4,
-                                                mangatag5: manga.tag5,
-                                                viewModel: viewModel
+                                                mangatag5: manga.tag5
                                             )
                                             .navigationBarHidden(true)
                                         ) {
                                             HStack(spacing: 17) {
                                                 if let url = URL(string: manga.cover) {
-                                                    CachedAsyncImage(url: url)
-                                                        .frame(width: 42.6, height: 63.9)
-                                                        .cornerRadius(9)
+                                                    AsyncImage(url: url) { image in
+                                                        image.resizable()
+                                                    } placeholder: {
+                                                        ProgressView()
+                                                    }
+                                                    .frame(width: 42.6, height: 63.9)
+                                                    .cornerRadius(9)
                                                 }
                                                 VStack(alignment: .leading, spacing: 3) {
                                                     Text(manga.name)
@@ -183,7 +195,7 @@ struct ExploreView: View {
         .onAppear {
             if !viewModel.isDataLoaded {
                 viewModel.getData()
-                print("ExploreView initialized, showMenu is: \(showMenu)")
+                print("ExploreView initialized, showMenu is: \(menuState.showMenu)")
             }
         }
     }
@@ -193,8 +205,10 @@ struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
         let viewModel = ViewModel()
         let hideNavBar = HideNavBar()
-        return ExploreView(viewModel: viewModel, showMenu: .constant(false))
+        let menuState = MenuState()
+        return ExploreView(viewModel: viewModel)
             .environmentObject(hideNavBar)
+            .environmentObject(menuState)
             .previewDevice("iPhone 12")
     }
 }

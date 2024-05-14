@@ -1,10 +1,3 @@
-//
-//  Manga_Downloader_DemoApp.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 15/2/22.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseCore
@@ -21,11 +14,16 @@ final class HideNavBar: ObservableObject{
     @Published var HideBar = false
 }
 
+final class MenuState: ObservableObject {
+    @Published var showMenu: Bool = false
+}
+
 @main
 struct Manga_Downloader_DemoApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var hideNavBar = HideNavBar()
+    @StateObject var menuState = MenuState()
     @State private var Opa = 1.0
     @State private var progress = 0.0
     let timer = Timer.publish(every: 1/400, on: .main, in: .common).autoconnect()
@@ -35,6 +33,7 @@ struct Manga_Downloader_DemoApp: App {
             ZStack{
                 ContentView().opacity(1)
                     .environmentObject(hideNavBar)
+                    .environmentObject(menuState)
                 LaunchScreen().opacity(Opa)
                 }
             .onReceive(timer) { _ in
@@ -48,4 +47,3 @@ struct Manga_Downloader_DemoApp: App {
         }
     }
 }
-    
