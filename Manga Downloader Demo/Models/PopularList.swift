@@ -1,13 +1,6 @@
-//
-//  Popular.swift
-//  Manga Downloader Demo
-//
-//  Created by 24EdwardZ on 17/2/22.
-//
-
 import Foundation
 
-struct Popular: Hashable, Codable, Identifiable {
+struct PopularList: Hashable, Codable, Identifiable {
     var id: String
     var name: String
     var author: String
@@ -22,6 +15,3 @@ struct Popular: Hashable, Codable, Identifiable {
     var tag5: String
 
 }
-
-
-

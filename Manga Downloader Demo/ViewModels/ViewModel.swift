@@ -2,7 +2,7 @@ import Foundation
 import Firebase
 
 class ViewModel: ObservableObject{
-    @Published var list = [Popular]()
+    @Published var list = [PopularList]()
     var isDataLoaded = false
     
     func getData(){
@@ -15,7 +15,7 @@ class ViewModel: ObservableObject{
             } else if let snapshot = snapshot {
                     DispatchQueue.main.async {
                         self.list = snapshot.documents.map{ d in
-                            return Popular(id: d.documentID,
+                            return PopularList(id: d.documentID,
                                            name: d["name"] as? String ?? "",
                                            author: d["author"] as? String ?? "",
                                            cover: d["cover"] as? String ?? "",
