@@ -7,7 +7,7 @@ struct NavigationBarView: View {
     var body: some View {
         VStack {
             Spacer()
-            if !hideNavBar.HideBar { 
+            if !hideNavBar.HideBar {
                 ZStack {
                     VStack(spacing: 0) {
                         Rectangle()
@@ -17,7 +17,7 @@ struct NavigationBarView: View {
                             .fill(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                             .frame(height: 83)
                             .opacity(1)
-                            .onAppear() {
+                            .onAppear {
                                 print("NavigationBarView onAppear triggered, setting selection to 2")
                                 selection = 2
                             }

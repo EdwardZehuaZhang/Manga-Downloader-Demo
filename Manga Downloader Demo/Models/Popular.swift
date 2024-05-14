@@ -1,6 +1,7 @@
+// Popular.swift
 import Foundation
 
-struct PopularList: Hashable, Codable, Identifiable {
+struct Popular: Hashable, Codable, Identifiable {
     var id: String
     var name: String
     var author: String
@@ -13,5 +14,4 @@ struct PopularList: Hashable, Codable, Identifiable {
     var tag3: String
     var tag4: String
     var tag5: String
-
 }

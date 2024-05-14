@@ -13,16 +13,21 @@ struct SignupView: View {
 
     var body: some View {
         NavigationView{
-            ZStack{
-                Image("Login UI")
-                    .padding(15)
-                    .onAppear(){
-                        hideBar.HideBar = true
-                     }
-                    .onDisappear(){
-                        hideBar.HideBar = false
-                    }
-            }.ignoresSafeArea(.all)
+            VStack{
+                ZStack{
+                    Text("AAA")
+                    Image("Login UI")
+                        .padding(15)
+                        .onAppear(){
+                            hideBar.HideBar = true
+                        }
+                        .onDisappear(){
+                            hideBar.HideBar = false
+                        }
+                }
+            }
+            .padding(.top, 25)
+            .ignoresSafeArea()
         }.navigationBarHidden(true)
     }
 }
@@ -30,7 +35,6 @@ struct SignupView: View {
 struct Signup_Previews: PreviewProvider {
     static var previews: some View {
         SignupView()
-        
             .previewDevice("iPhone 12")
             .environmentObject(HideNavBar())
     }
