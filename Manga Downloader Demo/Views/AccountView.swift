@@ -19,7 +19,7 @@ struct AccountView: View {
                             .frame(width: 90, height: 90)
                             .padding(.bottom, 0)
                         Image("LOG IN")
-                            .padding(.bottom, 50)
+                            .padding(.bottom, 60)
                         VStack {
                             HStack {
                                 TextField("Username", text: $username)
@@ -46,7 +46,7 @@ struct AccountView: View {
                             Rectangle()
                                 .fill(Color(.sRGB, red: 0.5974, green: 0.5974, blue: 0.6475))
                                 .frame(width: 308.6, height: 1.4)
-                        }.padding(.bottom, 50)
+                        }.padding(.bottom, 60)
                         VStack(spacing: 20) {
                             HStack {
                                 Text("OR").font(.custom("Lato Bold", size: 15)).multilineTextAlignment(.center)

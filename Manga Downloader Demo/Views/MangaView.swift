@@ -39,57 +39,60 @@ struct MangaView: View {
     var body: some View {
         ScrollView(.vertical) {
             ZStack {
-                HStack {
-                    Spacer()
-                    Image("MangaBlob")
-                        .padding(.bottom, 115)
-                        .onAppear {
-                            hideBar.HideBar = true
-                        }
-                        .onDisappear {
-                            hideBar.HideBar = false
-                        }
-                }
-                HStack {
-                    Spacer()
-                    ZStack {
-                        AsyncImage(url: URL(string: self.mangacover)) { image in
-                            image.resizable().scaledToFill()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: posterwidth / 2, height: 190.3)
-                        .cornerRadius(20, corners: [.topLeft, .bottomLeft])
-                        .offset(x: -posterwidth / 2)
-                        .rotationEffect(.degrees(10))
-                        .padding(.trailing, -20)
-                        .padding(.top, -170)
-                        .opacity(0)
+                ZStack{
+                    HStack {
+                        Spacer()
+                        Image("MangaBlob")
+                            .padding(.bottom, 185)
+                            .onAppear {
+                                hideBar.HideBar = true
+                            }
+                            .onDisappear {
+                                hideBar.HideBar = false
+                            }
+                    }
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            AsyncImage(url: URL(string: self.mangacover)) { image in
+                                image.resizable().scaledToFill()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: posterwidth / 2, height: 190.3)
+                            .cornerRadius(20, corners: [.topLeft, .bottomLeft])
+                            .offset(x: -posterwidth / 2)
+                            .rotationEffect(.degrees(10))
+                            .padding(.trailing, -20)
+                            .padding(.top, -170)
+                            .opacity(0)
+                            
+                            AsyncImage(url: URL(string: self.mangacover)) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .cornerRadius(20, corners: [.topRight, .bottomRight])
+                            .frame(width: posterwidth / 2, height: 190.3)
+                            .rotationEffect(.degrees(10))
+                            .padding(.trailing, -20)
+                            .padding(.top, -170)
+                            .opacity(0)
 
-                        AsyncImage(url: URL(string: self.mangacover)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
+                            AsyncImage(url: URL(string: self.mangacover)) { image in
+                                image.resizable().scaledToFill()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 264.8, height: 190.3)
+                            .cornerRadius(20)
+                            .rotationEffect(.degrees(10))
+                            .padding(.trailing, -20)
+                            .padding(.top, -215)
                         }
-                        .cornerRadius(20, corners: [.topRight, .bottomRight])
-                        .frame(width: posterwidth / 2, height: 190.3)
-                        .rotationEffect(.degrees(10))
-                        .padding(.trailing, -20)
-                        .padding(.top, -170)
-                        .opacity(0)
-
-                        AsyncImage(url: URL(string: self.mangacover)) { image in
-                            image.resizable().scaledToFill()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 264.8, height: 190.3)
-                        .cornerRadius(20)
-                        .rotationEffect(.degrees(10))
-                        .padding(.trailing, -20)
-                        .padding(.top, -190)
                     }
                 }
+                
                 VStack {
                     HStack {
                         Button(action: {
@@ -98,7 +101,6 @@ struct MangaView: View {
                             Image("Moveback")
                                 .padding(.bottom, 30)
                                 .padding(.top, 20)
-
                             Spacer()
                         }
                     }
@@ -132,7 +134,7 @@ struct MangaView: View {
                         Image("ONGOING")
                             .padding(.bottom, 13)
                         Spacer()
-                    }.padding(.top, 266)
+                    }.padding(.top, 270)
                     HStack {
                         Image("StarColored")
                         Image("StarColored")
@@ -159,16 +161,28 @@ struct MangaView: View {
                             .padding(.top, 12)
                             .lineSpacing(12)
                     }.frame(maxHeight: 140)
-                    HStack(spacing: 37) {
-                        ZStack {
-                            Text("Chapter 161").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                            Image("ChapterBack")
-                        }
-                        ZStack {
-                            Text("Chapter 160").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                            Image("ChapterBack")
-                        }
-                    }.padding(.top, 12)
+                    VStack{
+                        HStack(spacing: 37) {
+                            ZStack {
+                                Text("Chapter 1").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
+                                Image("ChapterBack")
+                            }
+                            ZStack {
+                                Text("Chapter 2").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
+                                Image("ChapterBack")
+                            }
+                        }.padding(.top, 12)
+                        HStack(spacing: 37) {
+                            ZStack {
+                                Text("Chapter 1").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
+                                Image("ChapterBack")
+                            }
+                            ZStack {
+                                Text("Chapter 2").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
+                                Image("ChapterBack")
+                            }
+                        }.padding(.top, 12)
+                    }
                     Spacer()
                 }.padding(.horizontal, 30)
             }
