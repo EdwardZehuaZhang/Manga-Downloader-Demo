@@ -19,7 +19,6 @@ struct SignupView: View {
                 }
                 .gesture(DragGesture()
                             .onChanged { value in
-                                // Detect the rightward drag
                                 if value.translation.width > 100 {
                                     self.presentationMode.wrappedValue.dismiss()
                         }
