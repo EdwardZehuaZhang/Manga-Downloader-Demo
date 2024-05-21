@@ -37,158 +37,188 @@ struct MangaView: View {
     private let posterwidth: CGFloat = 264.8
 
     var body: some View {
-        ScrollView(.vertical) {
-            ZStack {
-                ZStack{
-                    HStack {
-                        Spacer()
-                        Image("MangaBlob")
-                            .padding(.bottom, 185)
-                            .onAppear {
-                                hideBar.HideBar = true
+        NavigationView {
+            ScrollView(.vertical) {
+                ZStack {
+                    ZStack {
+                        HStack {
+                            Spacer()
+                            Image("MangaBlob")
+                                .padding(.bottom, 185)
+                                .onAppear {
+                                    hideBar.HideBar = true
+                                    print("Manga HideBar changed to: \(hideBar.HideBar)")
+                                }
+                        }
+                        HStack {
+                            Spacer()
+                            ZStack {
+                                AsyncImage(url: URL(string: self.mangacover)) { image in
+                                    image.resizable().scaledToFill()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: posterwidth / 2, height: 190.3)
+                                .cornerRadius(20, corners: [.topLeft, .bottomLeft])
+                                .offset(x: -posterwidth / 2)
+                                .rotationEffect(.degrees(10))
+                                .padding(.trailing, -20)
+                                .padding(.top, -170)
+                                .opacity(0)
+
+                                AsyncImage(url: URL(string: self.mangacover)) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .cornerRadius(20, corners: [.topRight, .bottomRight])
+                                .frame(width: posterwidth / 2, height: 190.3)
+                                .rotationEffect(.degrees(10))
+                                .padding(.trailing, -20)
+                                .padding(.top, -170)
+                                .opacity(0)
+
+                                AsyncImage(url: URL(string: self.mangacover)) { image in
+                                    image.resizable().scaledToFill()
+                                } placeholder: {
+                                    ProgressView()
+                                }
+                                .frame(width: 264.8, height: 190.3)
+                                .cornerRadius(20)
+                                .rotationEffect(.degrees(10))
+                                .padding(.trailing, -20)
+                                .padding(.top, -215)
                             }
-                            .onDisappear {
-                                hideBar.HideBar = false
-                            }
+                        }
                     }
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            AsyncImage(url: URL(string: self.mangacover)) { image in
-                                image.resizable().scaledToFill()
-                            } placeholder: {
-                                ProgressView()
+
+                    VStack {
+                        HStack {
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                            }) {
+                                Image("Moveback")
+                                    .padding(.bottom, 30)
+                                    .padding(.top, 20)
+                                Spacer()
                             }
-                            .frame(width: posterwidth / 2, height: 190.3)
-                            .cornerRadius(20, corners: [.topLeft, .bottomLeft])
-                            .offset(x: -posterwidth / 2)
-                            .rotationEffect(.degrees(10))
-                            .padding(.trailing, -20)
-                            .padding(.top, -170)
-                            .opacity(0)
-                            
+                        }
+                        HStack {
                             AsyncImage(url: URL(string: self.mangacover)) { image in
                                 image.resizable()
                             } placeholder: {
                                 ProgressView()
                             }
-                            .cornerRadius(20, corners: [.topRight, .bottomRight])
-                            .frame(width: posterwidth / 2, height: 190.3)
-                            .rotationEffect(.degrees(10))
-                            .padding(.trailing, -20)
-                            .padding(.top, -170)
-                            .opacity(0)
-
-                            AsyncImage(url: URL(string: self.mangacover)) { image in
-                                image.resizable().scaledToFill()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 264.8, height: 190.3)
-                            .cornerRadius(20)
-                            .rotationEffect(.degrees(10))
-                            .padding(.trailing, -20)
-                            .padding(.top, -215)
-                        }
-                    }
-                }
-                
-                VStack {
-                    HStack {
-                        Button(action: {
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image("Moveback")
-                                .padding(.bottom, 30)
-                                .padding(.top, 20)
+                            .cornerRadius(9)
+                            .frame(width: 54.9, height: 82.4)
+                            .padding(.trailing, 6)
+                            VStack(alignment: .leading) {
+                                Text(self.manganame)
+                                    .font(.custom("Lora Medium", size: 23))
+                                    .multilineTextAlignment(.leading)
+                                    .minimumScaleFactor(0.1)
+                                    .lineLimit(2)
+                                    .lineSpacing(2.2)
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .padding(.bottom, -4)
+                                Text(self.mangaauthor).font(.custom("Lato Regular", size: 14)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                                Spacer()
+                                    .frame(minHeight: 0)
+                                Spacer()
+                            }.frame(height: 78)
                             Spacer()
-                        }
-                    }
-                    HStack {
-                        AsyncImage(url: URL(string: self.mangacover)) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .cornerRadius(9)
-                        .frame(width: 54.9, height: 82.4)
-                        .padding(.trailing, 6)
-                        VStack(alignment: .leading) {
-                            Text(self.manganame)
-                                .font(.custom("Lora Medium", size: 23))
-                                .multilineTextAlignment(.leading)
-                                .minimumScaleFactor(0.1)
-                                .lineLimit(2)
-                                .lineSpacing(2.2)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .padding(.bottom, -4)
-                            Text(self.mangaauthor).font(.custom("Lato Regular", size: 14)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                        }.padding(.vertical, 10)
+                        HStack(alignment: .bottom) {
+                            Text(self.mangarating).font(.custom("Lora-Medium", size: 50))
+                            Image("ONGOING")
+                                .padding(.bottom, 13)
                             Spacer()
-                                .frame(minHeight: 0)
+                        }.padding(.top, 270)
+                        HStack {
+                            Image("StarColored")
+                            Image("StarColored")
+                            Image("StarColored")
+                            Image("StarColored")
+                            Image("Star")
                             Spacer()
-                        }.frame(height: 78)
-                        Spacer()
-                    }.padding(.vertical, 10)
-                    HStack(alignment: .bottom) {
-                        Text(self.mangarating).font(.custom("Lora-Medium", size: 50))
-                        Image("ONGOING")
-                            .padding(.bottom, 13)
-                        Spacer()
-                    }.padding(.top, 270)
-                    HStack {
-                        Image("StarColored")
-                        Image("StarColored")
-                        Image("StarColored")
-                        Image("StarColored")
-                        Image("Star")
-                        Spacer()
-                    }.padding(.top, -20)
-                    HStack(spacing: 26) {
-                        Text(self.mangatag1).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
-                        Text(self.mangatag2).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
-                        Text(self.mangatag3).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
-                        Text(self.mangatag4).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
-                        Text(self.mangatag5).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
-                    }
-                    .padding(.top, 6)
-                    Rectangle()
-                        .fill(Color(#colorLiteral(red: 0.9607843160629272, green: 0.9607843160629272, blue: 0.9607843160629272, alpha: 1)))
-                        .frame(width: nil, height: 1)
-                        .padding(.top, 12)
-                    ScrollView(.vertical) {
-                        Text(self.mangainfo)
-                            .font(.custom("Lato Regular", size: 14))
+                        }.padding(.top, -20)
+                        HStack(spacing: 26) {
+                            Text(self.mangatag1).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
+                            Text(self.mangatag2).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
+                            Text(self.mangatag3).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
+                            Text(self.mangatag4).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
+                            Text(self.mangatag5).font(.custom("Lato-Regular", size: 12)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).lineLimit(1)
+                        }
+                        .padding(.top, 6)
+                        Rectangle()
+                            .fill(Color(#colorLiteral(red: 0.9607843160629272, green: 0.9607843160629272, blue: 0.9607843160629272, alpha: 1)))
+                            .frame(width: nil, height: 1)
                             .padding(.top, 12)
-                            .lineSpacing(12)
-                    }.frame(maxHeight: 140)
-                    VStack{
-                        HStack(spacing: 37) {
-                            ZStack {
-                                Text("Chapter 1").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                                Image("ChapterBack")
-                            }
-                            ZStack {
-                                Text("Chapter 2").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                                Image("ChapterBack")
-                            }
-                        }.padding(.top, 12)
-                        HStack(spacing: 37) {
-                            ZStack {
-                                Text("Chapter 1").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                                Image("ChapterBack")
-                            }
-                            ZStack {
-                                Text("Chapter 2").font(.custom("Lato-Light", size: 15)).foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1))).multilineTextAlignment(.center)
-                                Image("ChapterBack")
-                            }
-                        }.padding(.top, 12)
-                    }
-                    Spacer()
-                }.padding(.horizontal, 30)
+                        ScrollView(.vertical) {
+                            Text(self.mangainfo)
+                                .font(.custom("Lato Regular", size: 14))
+                                .padding(.top, 12)
+                                .lineSpacing(12)
+                        }.frame(maxHeight: 140)
+                        VStack {
+                            HStack(spacing: 37) {
+                                ZStack {
+                                    NavigationLink(destination: PageView()) {
+                                        Image("ChapterBack")
+                                            .overlay(
+                                                Text("Chapter 1")
+                                                    .font(.custom("Lato-Light", size: 15))
+                                                    .foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                                                    .multilineTextAlignment(.center)
+                                            )
+                                    }
+                                }
+
+                                ZStack {
+                                    NavigationLink(destination: PageView()) {
+                                        Image("ChapterBack")
+                                            .overlay(
+                                                Text("Chapter 2")
+                                                    .font(.custom("Lato-Light", size: 15))
+                                                    .foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                                                    .multilineTextAlignment(.center)
+                                            )
+                                    }
+                                }
+                            }.padding(.top, 12)
+                            HStack(spacing: 37) {
+                                ZStack {
+                                    NavigationLink(destination: PageView()) {
+                                        Image("ChapterBack")
+                                            .overlay(
+                                                Text("Chapter 3")
+                                                    .font(.custom("Lato-Light", size: 15))
+                                                    .foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                                                    .multilineTextAlignment(.center)
+                                            )
+                                    }
+                                }
+                                ZStack {
+                                    NavigationLink(destination: PageView()) {
+                                        Image("ChapterBack")
+                                            .overlay(
+                                                Text("Chapter 4")
+                                                    .font(.custom("Lato-Light", size: 15))
+                                                    .foregroundColor(Color(#colorLiteral(red: 0.6, green: 0.6, blue: 0.65, alpha: 1)))
+                                                    .multilineTextAlignment(.center)
+                                            )
+                                    }
+                                }
+                            }.padding(.top, 12)
+                        }
+
+                        Spacer()
+                    }.padding(.horizontal, 30)
+                }
+                .ignoresSafeArea(.all, edges: .bottom)
+                .frame(maxHeight: .infinity)
+                .navigationBarHidden(true)
             }
-            .ignoresSafeArea(.all, edges: .bottom)
-            .frame(maxHeight: .infinity)
-            .navigationBarHidden(true)
         }
     }
 }

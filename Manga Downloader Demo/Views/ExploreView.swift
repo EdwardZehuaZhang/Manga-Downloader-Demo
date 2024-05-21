@@ -3,6 +3,7 @@ import SwiftUI
 struct ExploreView: View {
     @ObservedObject var viewModel: ViewModel
     @EnvironmentObject var menuState: MenuState
+    @EnvironmentObject var hideBar: HideNavBar
 
     var body: some View {
         NavigationView {
@@ -11,6 +12,10 @@ struct ExploreView: View {
                     Spacer()
                     Image("ExploreBlob")
                         .offset(y: -85)
+                }
+                .onAppear {
+                    hideBar.HideBar = false
+                    print("Explore HideBar changed to: \(hideBar.HideBar)")
                 }
                 VStack {
                     ScrollView(.vertical) {
@@ -196,6 +201,7 @@ struct ExploreView: View {
             if !viewModel.isDataLoaded {
                 viewModel.getData()
                 print("ExploreView initialized, showMenu is: \(menuState.showMenu)")
+                
             }
         }
     }

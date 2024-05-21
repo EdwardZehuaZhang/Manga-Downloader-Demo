@@ -10,9 +10,14 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   }
 }
 
-final class HideNavBar: ObservableObject{
-    @Published var HideBar = false
+final class HideNavBar: ObservableObject {
+    @Published var HideBar = false {
+        didSet {
+            print("HideNavBar state changed to: \(HideBar)")
+        }
+    }
 }
+
 
 final class MenuState: ObservableObject {
     @Published var showMenu: Bool = false

@@ -19,7 +19,9 @@ struct NavigationBarView: View {
                             .opacity(1)
                             .onAppear {
                                 print("NavigationBarView onAppear triggered, setting selection to 2")
-                                selection = 2
+                                if !hideNavBar.HideBar {
+                                    selection = 2
+                                }
                             }
                     }
                     HStack(spacing: 81) {

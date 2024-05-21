@@ -22,7 +22,6 @@ struct ContentView: View {
                     }
                 }
             }
-
         GeometryReader { geometry in
             ZStack(alignment: .leading) {
                 TabView(selection: $selection) {
