@@ -34,7 +34,7 @@ Tianshanz is an iOS manga reading application designed to enhance the mobile man
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/Yangtze-River-Full-of-Milkteaaa/Tianshanz-Manga.git
+   git clone https://github.com/EdwardZehuaZhang/Tianshanz-Manga.git
    ```
 
 2. **Open the project in Xcode:**
@@ -65,7 +65,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/Yangtze-River-Full-of-Milkteaaa/Tianshanz-Manga](https://github.com/Yangtze-River-Full-of-Milkteaaa/Tianshanz-Manga)
+Project Link: [https://github.com/EdwardZehuaZhang/Tianshanz-Manga](https://github.com/EdwardZehuaZhang/Tianshanz-Manga)
 
 ## Acknowledgements
 
